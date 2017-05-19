@@ -43,7 +43,7 @@ def captureImage(name):
     targetArea = QRectF(0, 0, width, height)
     c.render(imagePainter, targetArea, sourceArea)
     imagePainter.end()
-    image.save('C:\\Temp\\'+ name +'.jpg',"jpg")
+    image.save('./output/'+ name +'.jpg',"jpg")
 
 def doNext():
     global cx, cy, isDone, inx, a, b

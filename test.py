@@ -11,10 +11,15 @@ def captureImage(name, type, dpi, w, h):
     c.setPlotStyle(QgsComposition.Print)
     c.setPrintResolution(dpi)
     
+
     # add a map to the composition
+    x, y = 0,0
+    #w, h = c.paperWidth(), c.paperHeight()
+    #w, h = 50, 50
     c.setPaperSize(w, h, False)
-    composerMap = QgsComposerMap(c, 0, 0, w, h) 
+    composerMap = QgsComposerMap(c, x, y, w, h) 
     c.addItem(composerMap)
+    #c.resizePageToContents()
 
     ##Output to a raster image#########
     dpi = c.printResolution()
@@ -30,16 +35,11 @@ def captureImage(name, type, dpi, w, h):
 
     # render the composition
     imagePainter = QPainter(image)
-    sourceArea = QRectF(0, 0, w, h)
+    sourceArea = QRectF(0,0, w, h)
     targetArea = QRectF(0, 0, width, height)
     c.render(imagePainter, targetArea, sourceArea)
     imagePainter.end()
     image.save( name +'.' + type, type)
     print("Image '" + name + "' has been saved!")
 
-captureImage(
-            "./output/test22",      # file name
-            "png",                  # file type
-            100,                    # image dpi
-            200,                    # image width
-            200)                    # image height
+captureImage("./output/test04", "png", 100, 200, 200)

@@ -1,5 +1,4 @@
 from qgis.utils import iface
-import time
 
 rx = range(121,123)
 ry = range(22,24)
