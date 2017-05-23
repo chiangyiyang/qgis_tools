@@ -52,8 +52,6 @@ def doNext():
 def onMapLoad():
     global pts, curPtInx, imgWidth, imgHight, cx, cy, dpi, names
    
-    
-    #captureImage2(   "c:/temp/" + str(cx) + "_" + str(cy),
     captureImage2(  "c:/temp/" + str(curPtInx-1) 
                         + "_"+ names[curPtInx-1],
                     "jpg",
