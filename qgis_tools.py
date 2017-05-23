@@ -3,6 +3,18 @@ from PyQt4.QtCore import *
 from qgis.core import *
 from qgis.utils import iface
 
+
+def coorTransform(x, y, src_crs_id, tar_crs_id):
+    src_crs = QgsCoordinateReferenceSystem()
+    src_crs.createFromSrid(src_crs_id)
+    tar_crs = QgsCoordinateReferenceSystem()
+    tar_crs.createFromSrid(tar_crs_id)
+    tf = QgsCoordinateTransform(src_crs, tar_crs)
+    pt = QgsGeometry.fromPoint(QgsPoint(x, y))
+    pt.transform(tf)
+    return pt.asPoint()
+    
+    
 def captureImage2(name, type, w, h):
     ##Output using Map Composer#########
     # set up composition
